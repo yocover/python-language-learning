@@ -47,10 +47,10 @@ is_published = True
 # 5. 空值
 price = None
 
-# 类型转换
-x = input("x: ")
-y = int(x) + 1
-print(y)
+# # 类型转换
+# x = input("x: ")
+# y = int(x) + 1
+# print(y)
 
 # 中文编码
 print("你好，世界！")
@@ -61,3 +61,24 @@ print("你好，世界！")
 多行注释
 多行注释
 """
+
+print('hello, world!')
+
+print("It's a beautiful day")  # 不需要转义
+print('It\'s a beautiful day')  # 需要转义
+'''
+这是多行字符串
+使用三重双引号
+'''
+
+
+"""
+这是多行字符串
+使用三重单引号
+"""
+
+# 字符串拼接
+name = "John"
+age = 25
+message = "My name is " + name + " and I am " + str(age) + " years old."
+print(message)
