@@ -147,13 +147,22 @@ for i in range(1, 10):
 
 # 九九乘法表
 for i in range(1, 10):
-    for j in range(1, i+1):
+    for j in range(1, i + 1):
         print(f"{i} * {j} = {i*j}", end="\t")
     print()
 
 # 打印三角形
 for i in range(1, 10):
-    for j in range(1, i+1):
+    for j in range(1, i + 1):
         print("*", end="")
     print()
 
+
+for num in range(2, 100):
+    is_prime = True
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            is_prime = False
+            break
+        if is_prime:
+            print(num)
