@@ -1,0 +1,6 @@
+# test cat commend create file
+# cat > filename.ext
+# cat file1.txt file2.txt > combined.txt
+# cat >> existing.t在文件末尾追爱内容
+
+# 这是追加之后的内容
