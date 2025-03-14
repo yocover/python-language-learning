@@ -182,7 +182,7 @@ print("计数器:", counter())
 from math import sqrt as sq
 
 
-def is_prime(n):
+def is_prime(n: int):
     """判断一个数是否为素数"""
     if n <= 1:
         return False
@@ -239,7 +239,7 @@ keyword_args(name="张三", age=18)
 
 
 # 函数的默认参数
-def greet(name, message="你好"):
+def greet_with_message(name, message="你好"):
     """使用默认参数"""
     return f"{message}, {name}!"
 
@@ -270,16 +270,16 @@ def foo(*args, **kwargs):
 foo(1, 2, 3, a=1, b=2, age=3)
 
 
-def foo():
+def foo_1():
     print("hello, world!")
 
 
 # 如果函数重名，那么后面的函数会覆盖前面的函数
-def foo():
+def foo_2():
     print("goodbye, world!")
 
 
-foo()
+foo_2()
 
 # 用模块管理函数
 # 可以把函数放在一个模块中，然后在其他地方引用这个模块

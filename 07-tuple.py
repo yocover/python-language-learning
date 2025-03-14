@@ -6,7 +6,7 @@
 # 元组的创建
 # 创建元组
 tuple1 = ()
-tuple2 = tuple()
+tuple2: tuple = tuple()
 tuple3 = (1, 2, 3, 4, 5)
 tuple4 = ("hello", "world", "python")
 tuple5 = (1, 2, 3, 4, 5, "hello", "world")
@@ -27,7 +27,7 @@ tuple9 = tuple(range(10))
 tuple10 = (1,)
 
 # 元组中只包含一个元素时，需要在元素后面添加逗号
-tuple11 = (1)
+tuple11 = 1
 
 
 # 元组的方法
@@ -73,8 +73,8 @@ for i in tuple3:
 
 # 7. 检查元素是否在元组中
 print("\n检查元素:")
-print("'hello' in tuple4:", 'hello' in tuple4)
-print("'python' in tuple5:", 'python' in tuple5)
+print("'hello' in tuple4:", "hello" in tuple4)
+print("'python' in tuple5:", "python" in tuple5)
 
 # 8. 元组与列表的转换
 list_from_tuple = list(tuple3)

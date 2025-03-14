@@ -38,8 +38,8 @@ items1 = ["Python", "Java", "Go", "Kotlin"]  # 列表中的元素可以是不同
 items2 = list(("Python", "Java", "Go", "Kotlin"))  # 列表中的元素可以是不同的数据类型
 
 # 列表的创建
-list1 = []  # 创建一个空列表
-list2 = list()  # 创建一个空列表
+list1: list[str] = []  # 创建一个空列表
+list2: list[int] = list()  # 创建一个空列表
 list3 = [1, 2, 3, 4, 5]  # 创建一个包含5个整数的列表
 list4 = ["hello"] * 5  # 创建一个包含5个字符串的列表
 list5 = [1, 2, 3, 4, 5, "hello", "world"]  # 创建一个包含整数、字符串的列表
