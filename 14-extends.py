@@ -43,7 +43,7 @@ class Teacher(Person):
         print(f"{self.name} is sleeping in the classroom.")
 
 
-class Alex(Person, Student):
+class Alex(Person):
     """Alex class"""
 
     def __init__(self, name, age, grade, subject):
@@ -59,17 +59,28 @@ class Alex(Person, Student):
 
 
 def main():
+    # p1 = Person("Alice", 20)
+    # p1.eat()
+    # p1.sleep()
+
+    # stu1 = Student("Bob", 21, 3)
+    # stu1.eat()
+    # stu1.study()
+
+    # tea1 = Teacher("Charlie", 30, "Math")
+    # tea1.teach()
+    # tea1.sleep()
+
     p1 = Person("Alice", 20)
-    p1.eat()
-    p1.sleep()
-
     stu1 = Student("Bob", 21, 3)
-    stu1.eat()
-    stu1.study()
-
     tea1 = Teacher("Charlie", 30, "Math")
-    tea1.teach()
-    tea1.sleep()
+
+    # 把不同的对象放入列表中
+    perple = [p1, stu1, tea1]
+
+    # 多态的体现：相同的方法调用会产生不同的行为
+    for person in perple:
+        person.sleep()  # 每个对象都会调用自己的sleep
 
 
 if __name__ == "__main__":
