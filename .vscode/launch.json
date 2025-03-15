@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Debug Example",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/debug_example.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Debug with Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/21-pandas_example.py",
+            "args": ["arg1", "arg2"],
+            "env": {
+                "DEBUG": "1"
+            },
+            "cwd": "${workspaceFolder}",
+            "stopOnEntry": true,
+            "console": "integratedTerminal"
+        }
+    ]
+} 
