@@ -32,12 +32,12 @@ print("矩阵:", matrix)  # [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 
 # 6. 实际应用示例
 # 文件处理
-files = ['test.py', 'data.csv', 'image.jpg', 'doc.pdf']
-python_files = [f for f in files if f.endswith('.py')]
+files = ["test.py", "data.csv", "image.jpg", "doc.pdf"]
+python_files = [f for f in files if f.endswith(".py")]
 print("Python文件:", python_files)
 
 # 数据转换
-data = {'a': 1, 'b': 2, 'c': 3}
+data = {"a": 1, "b": 2, "c": 3}
 doubled = {k: v * 2 for k, v in data.items()}
 print("值翻倍的字典:", doubled)
 
@@ -45,3 +45,18 @@ print("值翻倍的字典:", doubled)
 text = "Hello World"
 char_count = {char: text.count(char) for char in set(text)}
 print("字符计数:", char_count)
+
+"""
+推导式的优点：
+
+1. 代码更简洁易读
+2. 执行效率通常更高
+3. 可以替代简单的 for 循环
+4. 适合处理数据转换和过滤
+使用建议：
+
+1. 保持推导式简单，避免过于复杂的逻辑
+2. 对于复杂操作，使用常规 for 循环更好
+3. 生成器表达式适合处理大量数据
+4. 注意内存使用，大数据集合使用生成器表达式
+"""
