@@ -1,0 +1,14 @@
+elasticsearch:
+  url: http://127.0.0.1:9200
+  username: 
+  password: 
+  caCerts: 
+
+application:
+  webHost: '0.0.0.0'
+  webPort: 8000
+  supportedFileTypeList:
+    - text/markdown
+  supportedFileSuffixList:
+    - md
+  fileSizeLimit: 5242880 # 5M
