@@ -7,7 +7,7 @@ from model.config.application_config import ApplicationConfig
 # 配置信息
 
 # 定义全局变量
-NACOS_CONFIG: Optional[NacosConfig] = None
+NACOS_CONFIG = None
 
 
 def parse_elasticsearch_config(config_data):

@@ -2,6 +2,9 @@ from fastapi import FastAPI, HTTPException
 from elasticsearch import Elasticsearch, NotFoundError
 from pydantic import BaseModel
 
+from utils.es_utils import get_sync_es_client, get_async_es_client
+
+
 app = FastAPI()
 
 # 添加错误处理的ES连接
@@ -43,8 +46,11 @@ class Document(BaseModel):
 
 @app.post("/documents/")
 async def create_document(doc: Document):
+
+    # client = get_sync_es_client()
+
     # 创建文档
-    response = es.index(
+    response = app.sync_es_client.index(
         index="my_index", document={"title": doc.title, "content": doc.content}
     )
     return response
@@ -65,7 +71,7 @@ async def search_documents(query: str):
 # 添加一个新的路由来获取所有文档
 @app.get("/documents/")
 async def get_all_documents():
-    response = es.search(
+    response = app.sync_es_client.search(
         index="my_index", body={"query": {"match_all": {}}}  # 匹配所有文档
     )
     return response["hits"]["hits"]
@@ -86,15 +92,10 @@ async def exact_search(query: str):
     """精确匹配搜索"""
     response = es.search(
         index="my_index",
-        body={
-            "query": {
-                "term": {
-                    "title.keyword": query  # 精确匹配标题
-                }
-            }
-        }
+        body={"query": {"term": {"title.keyword": query}}},  # 精确匹配标题
     )
     return response["hits"]["hits"]
+
 
 @app.get("/search/fuzzy/")
 async def fuzzy_search(query: str):
@@ -104,30 +105,23 @@ async def fuzzy_search(query: str):
         body={
             "query": {
                 "fuzzy": {
-                    "title": {
-                        "value": query,
-                        "fuzziness": "AUTO"  # 自动确定模糊度
-                    }
+                    "title": {"value": query, "fuzziness": "AUTO"}  # 自动确定模糊度
                 }
             }
-        }
+        },
     )
     return response["hits"]["hits"]
+
 
 @app.get("/search/wildcard/")
 async def wildcard_search(query: str):
     """通配符搜索"""
     response = es.search(
         index="my_index",
-        body={
-            "query": {
-                "wildcard": {
-                    "title": f"*{query}*"  # 包含查询词的内容
-                }
-            }
-        }
+        body={"query": {"wildcard": {"title": f"*{query}*"}}},  # 包含查询词的内容
     )
     return response["hits"]["hits"]
+
 
 @app.get("/search/advanced/")
 async def advanced_search(query: str, min_score: float = 0.5):
@@ -142,10 +136,10 @@ async def advanced_search(query: str, min_score: float = 0.5):
                         {"match": {"content": query}},
                         {"fuzzy": {"title": {"value": query, "fuzziness": "AUTO"}}},
                     ],
-                    "minimum_should_match": 1
+                    "minimum_should_match": 1,
                 }
             },
-            "min_score": min_score
-        }
+            "min_score": min_score,
+        },
     )
     return response["hits"]["hits"]

@@ -4,6 +4,11 @@ from pydantic import BaseModel
 
 from config.nacos_config import init_nacos_config
 
+from es_demo_pkg.es_demo import app as es_app
+
+# 导入 ES 工具函数
+from utils.es_utils import get_sync_es_client, get_async_es_client
+
 # 创建 FastAPI 实例
 app = FastAPI()
 
@@ -63,11 +68,7 @@ async def create_upload_file(file: UploadFile = File(...)):
     return {"filename": file.filename}
 
 
-# 添加配置类
-class ApplicationConfig:
-    def __init__(self):
-        self.web_host = "0.0.0.0"
-        self.web_port = 8000
+app.mount("/es", app=es_app)
 
 
 # 添加启动代码
@@ -86,7 +87,14 @@ if __name__ == "__main__":
 
     init_nacos_config(args)
 
-    from config.nacos_config import NACOS_CONFIG, NacosConfig
+    from config.nacos_config import NACOS_CONFIG
+
+    # 获取同步客户端
+    app.sync_es_client = get_sync_es_client()
+    # 获取异步客户端
+    app.async_es_client = get_async_es_client()
+
+    print("Elasticsearch 客户端初始化成功")
 
     config = uvicorn.Config(
         app,

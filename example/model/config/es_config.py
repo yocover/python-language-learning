@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 
 class ElasticSearchConfig(BaseModel):
-    host: str = "localhost"
+    url: str = "localhost"
     port: int = 9200
     username: Optional[str] = None
     password: Optional[str] = None
