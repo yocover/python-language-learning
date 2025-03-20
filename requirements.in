@@ -1,0 +1,24 @@
+# LlamaIndex 和相关依赖
+llama-index
+llama-index-llms-ollama
+llama-index-embeddings-huggingface
+
+# 数据处理
+numpy
+pandas
+scikit-learn
+
+# 向量数据库
+pymilvus
+
+# 文档处理
+python-docx
+PyPDF2
+
+# Web 框架
+fastapi
+uvicorn
+
+# 工具包
+python-dotenv
+tqdm 
